@@ -13,6 +13,8 @@ def main():
     budget = 0
 
     for cost_foo in functions:
+        for alg in algorithms:
+            pass
         # get seedset
         # get influece
         # plot results 
