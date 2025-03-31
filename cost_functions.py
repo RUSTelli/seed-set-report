@@ -4,7 +4,7 @@ import math
 
 
 def random_cost(graph: nx.Graph , node) -> int:
-    return random.randint(1, 100)
+    return random.randint(1, 13)
 
 def half_node_degree_cost(graph: nx.Graph, node) -> int:
     return math.ceil(graph.degree(node) / 2)

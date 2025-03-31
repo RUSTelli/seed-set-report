@@ -12,7 +12,7 @@ def greedy_seed_set(graph:nx.Graph, budget:int, cost_function:callable, euristic
     S_d = set()
 
     while(__set_cost(graph, S_d, cost_function) <= budget):
-        S_p = S_d.copy
+        S_p = S_d.copy()
         max_node = None
         max_value = 0
         for node in graph.nodes():

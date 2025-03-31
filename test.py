@@ -1,34 +1,27 @@
 from algorithms import ALGORITHMS, greedy_seed_set
 from cost_functions import FUNCTIONS, random_cost
 from euristics import EURISTICS, f1
+from cascade import influence_diffusion
 import networkx as nx
+from plotting import plot_graph_seed_set, plot_graph_influenced_nodes, get_graph_positions
 
 FILE_PATH = "dolphins.gml"
 
-
-def get_maximal_seedset(graph, cost_function, budget):
-    pass
-
-
 def main():
-    graph = nx.read_gml(FILE_PATH)
-    seed_set=greedy_seed_set(graph, 1000, random_cost, f1)
+    graph    = nx.read_gml(FILE_PATH)
+    BUDGET   = 100
+    plot     = True
+
+    seed_set = greedy_seed_set(graph, BUDGET, random_cost, f1)
+    influenced_nodes = influence_diffusion(graph, seed_set)
+
+    print(f"Seed set: {len(seed_set)}")
+    print(f"Influenced nodes: {len(influenced_nodes)}")
     
-
-    #TODO: update graph initialization
-    graph = 0
-    #TODO: select appropriate budget
-    budget = 0
-
-    '''
-
-    for cost_foo in FUNCTIONS:
-        for alg in ALGORITHMS:
-            pass
-        # get seedset
-        # get influece
-        # plot results''
-    '''
+    if plot:
+        pos = get_graph_positions(graph)
+        plot_graph_seed_set(graph, seed_set, pos)
+        plot_graph_influenced_nodes(graph, influenced_nodes, pos)
 
 if __name__ == "__main__":
     main()
