@@ -37,3 +37,10 @@ def f3(dominating_set: set, graph) -> int:
                 (math.ceil(graph.degree(node) / 2) - i + 1)/(node.degree() -i + 1)
             )
     return sum
+
+
+EURISTICS = [
+    f1,
+    f2,
+    f3
+]
