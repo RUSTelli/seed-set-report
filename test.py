@@ -1,4 +1,4 @@
-from algorithms import ALGORITHMS, greedy_seed_set
+from seed_set_methods import ALGORITHMS, greedy_seed_set
 from cost_functions import FUNCTIONS, random_cost
 from euristics import EURISTICS, f1
 from cascade import influence_diffusion
