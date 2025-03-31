@@ -1,8 +1,6 @@
 import math
 import networkx as nx
 
-
-
 def f1(dominating_set: set, graph) -> int:
     sum = 0
     for node in graph.nodes():

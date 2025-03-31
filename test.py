@@ -2,13 +2,13 @@ from algorithms import ALGORITHMS, greedy_seed_set
 from cost_functions import FUNCTIONS, random_cost
 from euristics import EURISTICS, f1
 from cascade import influence_diffusion
+from const import GRAPH_PATH
 import networkx as nx
 from plotting import plot_graph_seed_set, plot_graph_influenced_nodes, get_graph_positions
 
-FILE_PATH = "dolphins.gml"
 
 def main():
-    graph    = nx.read_gml(FILE_PATH)
+    graph    = nx.read_gml(GRAPH_PATH)
     BUDGET   = 100
     plot     = True
 

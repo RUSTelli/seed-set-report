@@ -1,5 +1,4 @@
 import networkx as nx
-from algorithms import ALGORITHMS
 
 
 def __diffusion_condition(influeced_nodes:set, graph:nx.Graph, neighbor):
