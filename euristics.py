@@ -3,9 +3,8 @@ import networkx as nx
 
 
 
-def f1(dominating_set: set, graph):
+def f1(dominating_set: set, graph) -> int:
     sum = 0
-
     for node in graph.nodes():
         # if the node is not in the dominating set
         neighbors = set(graph.neighbors(node))
@@ -16,9 +15,8 @@ def f1(dominating_set: set, graph):
     return sum
 
 
-def f2(dominating_set: set, graph):
+def f2(dominating_set: set, graph) -> int:
     sum = 0
-
     for node in graph.nodes():
         neighbors = set(graph.neighbors(node))
         for i in range(len(neighbors.intersection(dominating_set))):
@@ -29,9 +27,8 @@ def f2(dominating_set: set, graph):
     return sum
             
 
-def f3(dominating_set: set, graph):
+def f3(dominating_set: set, graph) -> int:
     sum = 0
-
     for node in graph.nodes():
         neighbors = set(graph.neighbors(node))
         for i in range(len(neighbors.intersection(dominating_set))):

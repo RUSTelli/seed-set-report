@@ -1,12 +1,12 @@
 import networkx as nx
 
-def __delta_euristic(euristic, dominating_set, node):
+def __delta_euristic(euristic:callable, dominating_set:set, node) -> int:
     return euristic(dominating_set.union({node})) - euristic(dominating_set)
 
-def __set_cost(nodes, cost_function):
+def __set_cost(nodes:set, cost_function:callable) -> int:
     return sum([cost_function(node) for node in nodes])
 
-def greedy_seed_set(graph, budget, cost_function, euristic):
+def greedy_seed_set(graph, budget:int, cost_function:callable, euristic:callable) -> set:
     # seed set, set of nodes that will be selected
     S_p = set()
     S_d = set()
@@ -22,7 +22,6 @@ def greedy_seed_set(graph, budget, cost_function, euristic):
                     max_value = value
                     max_node = node
         S_d.add(max_node)
-
     return S_p
     
     
@@ -34,7 +33,7 @@ def alg3(graph, cost_function, budget):
     pass
 
 
-algorithms = [
+ALGORITHMS = [
     greedy_seed_set,
     WTSS,
     alg3,

@@ -1,5 +1,5 @@
-from CMC_algorithms import algorithms
-from cost_functions import functions
+from algorithms import ALGORITHMS
+from cost_functions import FUNCTIONS
 
 
 def get_maximal_seedset(graph, cost_function, budget):
@@ -12,8 +12,8 @@ def main():
     #TODO: select appropriate budget
     budget = 0
 
-    for cost_foo in functions:
-        for alg in algorithms:
+    for cost_foo in FUNCTIONS:
+        for alg in ALGORITHMS:
             pass
         # get seedset
         # get influece
