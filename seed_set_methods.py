@@ -10,7 +10,11 @@ def greedy_seed_set(
         budget: int, 
         cost_function:Callable, 
         euristic: Callable) -> set:
-        
+    """
+    Greedy algorithm for selecting a seed set of nodes in a graph.
+    The algorithm iteratively selects nodes that maximize the increase in the
+    euristic function while considering the cost of adding each node to the seed set.
+    """
 
     def delta_euristic(euristic, dominating_set, node) -> int:
         return euristic(dominating_set.union({node}), graph) - euristic(dominating_set, graph)
@@ -35,7 +39,18 @@ def greedy_seed_set(
     return S_p
     
 
-def WTSS(graph: nx.Graph, budget:int, cost_function: Callable, euristic):
+def WTSS(
+        graph: nx.Graph, 
+        budget:int, 
+        cost_function: Callable, 
+        euristic: Callable) -> set:
+    """
+    WTSS algorithm for selecting a seed set of nodes in a graph.
+    The algorithm iteratively selects nodes that maximize the ratio of the cost
+    to the degree of the node, while considering the cost of adding each node to the seed set.
+    The algorithm stops when the budget is exceeded or when no more nodes can be added.
+
+    """
     S = set()
     total_cost = 0
     U = set(graph.nodes())
@@ -94,7 +109,11 @@ def WTSS(graph: nx.Graph, budget:int, cost_function: Callable, euristic):
 
     return S
 
-def alg3(graph, cost_function, budget):
+def alg3(
+        graph: nx.Graph, 
+        budget: int, 
+        cost_function: Callable, 
+        euristic: Callable) -> set:
     pass
 
 
