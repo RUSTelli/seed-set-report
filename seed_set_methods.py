@@ -1,12 +1,19 @@
+from typing import Callable
 import networkx as nx
 import math
 
 
 
-def greedy_seed_set(graph: nx.Graph, budget: int, cost_function: callable, euristic: callable) -> set:
+
+def greedy_seed_set(
+        graph: nx.Graph, 
+        budget: int, 
+        cost_function:Callable, 
+        euristic: Callable) -> set:
+        
+
     def delta_euristic(euristic, dominating_set, node) -> int:
         return euristic(dominating_set.union({node}), graph) - euristic(dominating_set, graph)
-
     def set_cost(nodes: set, cost_function: callable) -> int:
         return sum([cost_function(graph, node) for node in nodes])
 
@@ -28,7 +35,7 @@ def greedy_seed_set(graph: nx.Graph, budget: int, cost_function: callable, euris
     return S_p
     
 
-def WTSS(graph: nx.Graph, budget:int, cost_function, euristic):
+def WTSS(graph: nx.Graph, budget:int, cost_function: Callable, euristic):
     S = set()
     total_cost = 0
     U = set(graph.nodes())
@@ -69,22 +76,21 @@ def WTSS(graph: nx.Graph, budget:int, cost_function, euristic):
             break  # last statement is 'return S'
 
         # Update neighbors based on case
-        if node in U:
-            if k[node] == 0:  # Case 1
-                for u in N[node]:
-                    if u in U:
-                        k[u] = max(k[u] - 1, 0)
-            elif node in S:  # Case 2
-                for u in N[node]:
-                    if u in U:
-                        k[u] -= 1
-
-            # Update delta and N for all cases
+        if k[node] == 0:  # Case 1
             for u in N[node]:
                 if u in U:
-                    delta[u] -= 1
-                    N[u].remove(node)
-            U.remove(node)
+                    k[u] = max(k[u] - 1, 0)
+        elif node in S:  # Case 2
+            for u in N[node]:
+                if u in U:
+                    k[u] -= 1
+
+        # Update delta and N for all cases
+        for u in N[node]:
+            if u in U:
+                delta[u] -= 1
+                N[u].remove(node)
+        U.remove(node)
 
     return S
 
