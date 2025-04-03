@@ -1,4 +1,4 @@
-from seed_set_methods import ALGORITHMS, greedy_seed_set
+from seed_set_methods import ALGORITHMS, greedy_seed_set, WTSS
 from cost_functions import FUNCTIONS, random_cost
 from euristics import EURISTICS, f1
 from cascade import influence_diffusion
@@ -9,7 +9,7 @@ from plotting import plot_graph_seed_set, plot_graph_influenced_nodes, get_graph
 
 def main():
     graph    = nx.read_gml(GRAPH_PATH)
-    BUDGET   = 100
+    BUDGET   = 50
     plot     = True
 
     seed_set = greedy_seed_set(graph, BUDGET, random_cost, f1)
