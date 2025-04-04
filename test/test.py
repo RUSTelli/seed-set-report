@@ -9,10 +9,10 @@ from plotting import plot_graph_seed_set, plot_graph_influenced_nodes, get_graph
 
 def main():
     graph    = nx.read_gml(GRAPH_PATH)
-    BUDGET   = 50
+    BUDGET   = 100
     plot     = True
 
-    seed_set = greedy_seed_set(graph, BUDGET, random_cost, f1)
+    seed_set = WTSS(graph, BUDGET, random_cost, f1)
     influenced_nodes = influence_diffusion(graph, seed_set)
 
     print(f"Seed set: {len(seed_set)}")
