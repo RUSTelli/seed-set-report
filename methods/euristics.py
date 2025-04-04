@@ -1,7 +1,7 @@
 import math
 import networkx as nx
 
-def f1(dominating_set: set, graph) -> int:
+def f1(dominating_set:set, graph:nx.Graph) -> int:
     sum = 0
     for node in graph.nodes():
         # if the node is not in the dominating set
@@ -13,7 +13,7 @@ def f1(dominating_set: set, graph) -> int:
     return sum
 
 
-def f2(dominating_set: set, graph) -> int:
+def f2(dominating_set:set, graph:nx.Graph) -> int:
     sum = 0
     for node in graph.nodes():
         neighbors = set(graph.neighbors(node))
@@ -25,7 +25,7 @@ def f2(dominating_set: set, graph) -> int:
     return sum
             
 
-def f3(dominating_set: set, graph) -> int:
+def f3(dominating_set:set, graph:nx.Graph) -> int:
     sum = 0
     for node in graph.nodes():
         neighbors = set(graph.neighbors(node))

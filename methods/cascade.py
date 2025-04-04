@@ -1,6 +1,5 @@
 import networkx as nx
 
-
 def __diffusion_condition(influeced_nodes:set, graph:nx.Graph, neighbor):
     neighbors = set(graph.neighbors(neighbor))
     neighbors_influenced = len(influeced_nodes.intersection(neighbors))

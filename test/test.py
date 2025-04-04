@@ -1,11 +1,10 @@
-from seed_set_methods import ALGORITHMS, greedy_seed_set, WTSS
-from cost_functions import FUNCTIONS, random_cost
-from euristics import EURISTICS, f1
-from cascade import influence_diffusion
-from const import GRAPH_PATH
+from methods.seed_set_methods import ALGORITHMS, greedy_seed_set, WTSS
+from methods.cost_functions import FUNCTIONS, random_cost
+from methods.euristics import EURISTICS, f1
+from methods.cascade import influence_diffusion
+from shared.const import GRAPH_PATH
 import networkx as nx
-from plotting import plot_graph_seed_set, plot_graph_influenced_nodes, get_graph_positions
-
+from shared.plotting import plot_graph_seed_set, plot_graph_influenced_nodes, get_graph_positions
 
 def main():
     graph    = nx.read_gml(GRAPH_PATH)

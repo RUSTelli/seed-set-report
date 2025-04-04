@@ -1,11 +1,11 @@
-from seed_set_methods import ALGORITHMS
-from cost_functions import FUNCTIONS
-from euristics import EURISTICS
+from methods.seed_set_methods import ALGORITHMS
+from methods.cost_functions import FUNCTIONS
+from methods.euristics import EURISTICS
 
-from const import GRAPH_PATH
-from cascade import influence_diffusion
+from shared.const import GRAPH_PATH
+from methods.cascade import influence_diffusion
 import networkx as nx
-from plotting import plot_graph_seed_set, plot_graph_influenced_nodes, get_graph_positions
+from shared.plotting import plot_graph_seed_set, plot_graph_influenced_nodes, get_graph_positions
 
 graph = nx.read_gml(GRAPH_PATH)
 BUDGET = 100

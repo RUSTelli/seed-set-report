@@ -1,6 +1,6 @@
 import networkx as nx
 import matplotlib.pyplot as plt
-from const import PLOT_PATH
+from shared.const import PLOT_PATH
 import os
 
 def get_graph_positions(graph: nx.Graph):
