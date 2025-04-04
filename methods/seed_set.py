@@ -1,5 +1,6 @@
 from typing import Callable
 import networkx as nx
+from networkx.algorithms import community
 import math
 
 def greedy_seed_set(
@@ -106,16 +107,88 @@ def WTSS(
 
     return S
 
-def alg3(
-        graph: nx.Graph, 
-        budget: int, 
-        cost_function: Callable, 
-        euristic: Callable) -> set:
-    pass
+
+
+def CACESS(
+    graph: nx.Graph, 
+    budget: int, 
+    cost_function: Callable,
+    huristic: Callable, 
+    resolution: float = 1.0
+) -> set:
+    """
+    Community-Aware Cost-Effective Seed Selection (CACESS) Algorithm
+    
+    1. Detect communities using Louvain method
+    2. Within each community:
+       a. Calculate node efficiency = (degree * betweenness) / cost
+       b. Select top candidates until community budget is exhausted
+    3. Global optimization pass to refine selection
+    
+    Args:
+        graph: Input graph
+        budget: Total activation budget
+        cost_function: Function (G, node) -> cost
+        resolution: Community detection resolution parameter
+        
+    Returns:
+        Seed set of nodes that maximizes influence across communities
+    """
+    
+    # Phase 1: Community Detection
+    communities = community.louvain_communities(graph, resolution=resolution, seed=42)
+    
+    # Phase 2: Intra-Community Selection
+    seed_set = set()
+    remaining_budget = budget
+    community_budgets = {i: budget//len(communities) for i in range(len(communities))}
+    
+    for i, comm in enumerate(communities):
+        comm_graph = graph.subgraph(comm)
+        candidates = []
+        
+        # Calculate node efficiency metrics
+        degrees = nx.degree_centrality(comm_graph)
+        betweenness = nx.betweenness_centrality(comm_graph)
+        
+        for node in comm:
+            eff = (degrees[node] * betweenness[node]) / cost_function(graph, node)
+            candidates.append((eff, node))
+            
+        # Select nodes within community budget
+        candidates.sort(reverse=True)
+        local_budget = community_budgets[i]
+        
+        for eff, node in candidates:
+            cost = cost_function(graph, node)
+            if cost <= local_budget and node not in seed_set:
+                seed_set.add(node)
+                local_budget -= cost
+                remaining_budget -= cost
+                
+    # Phase 3: Global Optimization Pass
+    candidates = []
+    degrees = nx.degree_centrality(graph)
+    betweenness = nx.betweenness_centrality(graph)
+    
+    for node in graph.nodes():
+        if node not in seed_set:
+            eff = (degrees[node] * betweenness[node]) / cost_function(graph, node)
+            candidates.append((eff, node))
+    
+    candidates.sort(reverse=True)
+    
+    for eff, node in candidates:
+        cost = cost_function(graph, node)
+        if cost <= remaining_budget:
+            seed_set.add(node)
+            remaining_budget -= cost
+            
+    return seed_set
 
 
 ALGORITHMS = [
     greedy_seed_set,
     WTSS,
-    alg3,
+    CACESS,
 ]
