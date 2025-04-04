@@ -48,3 +48,6 @@ def plot_graph_influenced_nodes(graph: nx.Graph, influenced_nodes: set, pos: dic
     path = os.path.join(PLOT_PATH, f"{config}_influenced_set.png")
     plt.savefig(path)
     plt.close()  # Close the figure to free memory
+
+def plot_algorithm_trend(algorithm, cost, heuristic, budget, config = ""):
+    pass

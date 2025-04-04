@@ -2,9 +2,6 @@ from typing import Callable
 import networkx as nx
 import math
 
-
-
-
 def greedy_seed_set(
         graph: nx.Graph, 
         budget: int, 
