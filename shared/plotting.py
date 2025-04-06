@@ -49,5 +49,13 @@ def plot_graph_influenced_nodes(graph: nx.Graph, influenced_nodes: set, pos: dic
     plt.savefig(path)
     plt.close()  # Close the figure to free memory
 
-def plot_algorithm_trend(algorithm, cost, heuristic, budget, config = ""):
-    pass
+def plot_algorithm_trend(x: list, y: list, config = ""):
+    plt.figure(figsize=(10, 6))
+    plt.plot(x, y, marker='o', linestyle='-', color='b')
+    plt.title(f"{config}")
+    plt.xlabel('X-axis Label')
+    plt.ylabel('Y-axis Label')
+    plt.grid()
+    path = os.path.join(PLOT_PATH, f"{config}_algorithm_trend.png")
+    plt.savefig(path)
+    plt.close()  # Close the figure to free memory

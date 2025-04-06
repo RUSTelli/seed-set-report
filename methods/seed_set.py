@@ -6,8 +6,8 @@ import math
 def greedy_seed_set(
         graph: nx.Graph, 
         budget: int, 
-        cost_function:Callable, 
-        euristic: Callable) -> set:
+        cost_function:Callable
+    ) -> set:
     """
     Greedy algorithm for selecting a seed set of nodes in a graph.
     The algorithm iteratively selects nodes that maximize the increase in the
@@ -18,6 +18,14 @@ def greedy_seed_set(
         return euristic(dominating_set.union({node}), graph) - euristic(dominating_set, graph)
     def set_cost(nodes: set, cost_function: callable) -> int:
         return sum([cost_function(graph, node) for node in nodes])
+    def euristic(dominating_set: set, graph: nx.Graph) -> int:
+        return sum(
+            min(
+                len(set(graph.neighbors(node)).intersection(dominating_set)),
+                math.ceil(graph.degree(node) / 2)
+            )
+            for node in graph.nodes()
+        )
 
     # seed set, set of nodes that will be selected
     S_p = set()
@@ -40,8 +48,8 @@ def greedy_seed_set(
 def WTSS(
         graph: nx.Graph, 
         budget:int, 
-        cost_function: Callable, 
-        euristic: Callable) -> set:
+        cost_function: Callable
+    ) -> set:
     """
     WTSS algorithm for selecting a seed set of nodes in a graph.
     The algorithm iteratively selects nodes that maximize the ratio of the cost
@@ -49,6 +57,7 @@ def WTSS(
     The algorithm stops when the budget is exceeded or when no more nodes can be added.
 
     """
+    
     S = set()
     total_cost = 0
     U = set(graph.nodes())
@@ -79,7 +88,7 @@ def WTSS(
         if not node:
             max_value = -1
             for v in U:
-                if total_cost + cost[v] <= budget:
+                if total_cost + cost[v] <= budget and delta[v] > 0:
                     value = (cost[v] * k[v]) / (delta[v] * (delta[v] + 1))
                     if value > max_value:
                         max_value = value
@@ -112,8 +121,7 @@ def WTSS(
 def CACESS(
     graph: nx.Graph, 
     budget: int, 
-    cost_function: Callable,
-    huristic: Callable, 
+    cost_function: Callable, 
     resolution: float = 1.0
 ) -> set:
     """
@@ -187,8 +195,8 @@ def CACESS(
     return seed_set
 
 
-ALGORITHMS = [
-    greedy_seed_set,
-    WTSS,
-    CACESS,
+ALGORITHMS = [    
+    ("greedy",    greedy_seed_set),
+    ("wtss",      WTSS),
+    ("community", CACESS),
 ]
