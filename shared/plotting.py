@@ -8,44 +8,32 @@ def get_graph_positions(graph: nx.Graph):
     return nx.spring_layout(graph)
 
 # Plot the graph with the seed set
-def plot_graph_seed_set(graph: nx.Graph, seed_set: set, pos: dict, config = ""):
+def plot_graph_with_highlighted_nodes(graph: nx.Graph, nodes_to_highlight: set, pos: dict, set_type="seed_set", config = ""):
     plt.figure(figsize=(10, 8))
     
     # Draw all nodes and edges
     nx.draw_networkx_edges(graph, pos, alpha=0.5)
     nx.draw_networkx_nodes(graph, pos, node_color='lightblue', node_size=300, label='Nodes')
     
-    # Highlight the seed set
-    nx.draw_networkx_nodes(graph, pos, nodelist=seed_set, node_color='red', node_size=500, label='Seed Set')
+    # Determine color based on set_type
+    
+    if set_type == 'seed_set':
+        highlight_color = 'red'
+        config = f"{config} - seed set: {len(nodes_to_highlight)}"
+    else:
+        highlight_color = 'green'
+        config = f"{config} - influenced: {len(nodes_to_highlight)}"
+    
+    # Highlight the specified nodes
+    nx.draw_networkx_nodes(graph, pos, nodelist=nodes_to_highlight, node_color=highlight_color, node_size=500, label=f"{set_type.replace('_', ' ').title()}")
     
     # Draw labels
     nx.draw_networkx_labels(graph, pos, font_size=10, font_color='black')
     
     plt.legend(scatterpoints=1)
-    plt.title(f"Graph with Seed Set Highlighted (Seed Set Size: {len(seed_set)})")
+    plt.title(f"{config}")
     plt.axis('off')
-    path = os.path.join(PLOT_PATH, f"{config}_seed_set.png")
-    plt.savefig(path)
-    plt.close()  # Close the figure to free memory
-
-# Plot the graph with the influenced nodes
-def plot_graph_influenced_nodes(graph: nx.Graph, influenced_nodes: set, pos: dict, config = ""):
-    plt.figure(figsize=(10, 8))
-    
-    # Draw all nodes and edges
-    nx.draw_networkx_edges(graph, pos, alpha=0.5)
-    nx.draw_networkx_nodes(graph, pos, node_color='lightblue', node_size=300, label='Nodes')
-    
-    # Highlight the influenced nodes
-    nx.draw_networkx_nodes(graph, pos, nodelist=influenced_nodes, node_color='green', node_size=500, label='Influenced Nodes')
-    
-    # Draw labels
-    nx.draw_networkx_labels(graph, pos, font_size=10, font_color='black')
-    
-    plt.legend(scatterpoints=1)
-    plt.title(f"Graph with Influenced Nodes Highlighted (Influenced Size: {len(influenced_nodes)})")
-    plt.axis('off')
-    path = os.path.join(PLOT_PATH, f"{config}_influenced_set.png")
+    path = os.path.join(PLOT_PATH, f"{config}.png")
     plt.savefig(path)
     plt.close()  # Close the figure to free memory
 
