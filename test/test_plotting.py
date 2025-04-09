@@ -5,7 +5,7 @@ from methods.cascade import influence_diffusion
 import networkx as nx
 from shared.plotting import plot_graph_with_highlighted_nodes, get_graph_positions, plot_algorithm_trend
 
-def plot_seed_set_diffusion(budget = 50):
+def plot_seed_set_diffusion(budget = 100):
     """
     Plots the seed set and influenced nodes for each algorithm and cost function.
     Args:
@@ -72,3 +72,6 @@ def plot_budget_influenced_size_graph(max_budget=100, simulations=10):
 def main():
     plot_seed_set_diffusion()
     plot_budget_influenced_size_graph()
+
+if __name__ == "__main__":
+    main()

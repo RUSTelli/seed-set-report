@@ -21,9 +21,9 @@ def kcore_degree_cost(graph: nx.Graph, node) -> int:
     
     # Combine components (core number weighted more heavily)
     return math.ceil(
-        0.7 * core_number[node] +  # Emphasize network position
-        0.3 * diversity +          # Reward nodes connecting diverse neighbors
-        0.1 * graph.degree(node)   # Mild degree penalty
+        0.60 * core_number[node] +  # Emphasize network position
+        0.30 * diversity +          # Reward nodes connecting diverse neighbors
+        0.10 * graph.degree(node)   # Mild degree penalty
     )
 
 FUNCTIONS = [
