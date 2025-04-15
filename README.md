@@ -11,18 +11,29 @@
 
 ## 🔧 Quick Installation
 
-### 1. Create Virtual Environment
+### Create Virtual Environment
 ```bash
 python -m venv reti-env
+```
+### Activate the environment
+```bash
 source reti-env/bin/activate  # Linux/MacOS
 .\reti-env\Scripts\activate   # Windows
 ```
-### 2. add plots directory and install packages 
+### add plots directory and install packages 
 ```bash
 ### 2. Install packages and setup
 mkdir plots/  # Create output directory structure
 pip install -r requirements.txt
 python setup.py install  # Install as editable package
+```
+
+### add plots directory and install packages 
+```bash
+### 2. Install packages and setup
+mkdir plots/  # Create output directory structure
+
+
 ```
 ---
 ## 🚀 To run, move inside project's directory, substitute 'x' with 'influenced' or 'performances':
