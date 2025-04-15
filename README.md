@@ -44,7 +44,7 @@ python plotting/main.py --plot_type x
 Project/
 ├── methods/              # Core algorithm implementations
 ├── plottings/            # Plotting methods
-    └── main.py           # Can plot algorith 'performances' or graph 'influenced' nodes
+    └── main.py           # Can plot algorithm 'performances' or graph 'influenced' nodes
 ├── shared/               # constants
 ├── plots/                # Generated outputs
 ├── requirements.txt      # Python dependencies
