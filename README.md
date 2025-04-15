@@ -44,6 +44,7 @@ python plotting/main.py --plot_type x
 Project/
 ├── methods/              # Core algorithm implementations
 ├── plottings/             # Plotting methods
+    └── main.py
 ├── shared/               # constants
 ├── plots/                # Generated outputs
 ├── requirements.txt      # Python dependencies
