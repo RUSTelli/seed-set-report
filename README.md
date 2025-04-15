@@ -17,6 +17,7 @@ python -m venv reti-env
 source reti-env/bin/activate  # Linux/MacOS
 .\reti-env\Scripts\activate   # Windows
 ```
+### 2. add plots directory and install packages 
 ```bash
 ### 2. Install packages and setup
 mkdir plots/  # Create output directory structure
@@ -33,7 +34,7 @@ python plotting/main.py --plot_type x
 ```bash
 Project/
 ├── methods/              # Core algorithm implementations
-├── plotings/             # Plotting methods
+├── plottings/             # Plotting methods
 ├── shared/               # constants
 ├── plots/                # Generated outputs
 ├── requirements.txt      # Python dependencies
