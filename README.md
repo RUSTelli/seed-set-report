@@ -22,7 +22,7 @@ source reti-env/bin/activate  # Linux/MacOS
 ```
 ### Add plots directory
 ```bash
-mkdir plots/  # Create output directory structure
+mkdir plots
 ```
 ### Install packages 
 ```bash
@@ -30,9 +30,7 @@ pip install -r requirements.txt
 ```
 ### Setup the packages
 ```bash
-python setup.py install  # Install as editable package
-```
-
+python setup.py install
 ```
 ---
 ## 🚀 To run, move inside project's directory, substitute 'x' with 'influenced' or 'performances':
