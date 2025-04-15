@@ -9,7 +9,7 @@
 
 ---
 
-## 🚀 Quick Installation
+## 🔧 Quick Installation
 
 ### 1. Create Virtual Environment
 ```bash
@@ -24,14 +24,13 @@ pip install -r requirements.txt
 python setup.py install  # Install as editable package
 ```
 ---
-## 🚀 Plotting result
+## 🚀 To run, move inside project's directory, substitute 'x' with 'influenced' or 'performances':
 ```bash
-## 🚀 To run, move inside project's directory:
-python plotting/main.py --plot_type x, where 'x' may be 'influenced' or 'performances'
+python plotting/main.py --plot_type x 
 ```
 
 
-
+```bash
 Project/
 ├── methods/              # Core algorithm implementations
 ├── plotings/             # Plotting methods
@@ -40,3 +39,4 @@ Project/
 ├── requirements.txt      # Python dependencies
 ├── setup.py              # Package configuration
 └── ...                   # Additional project files
+```
