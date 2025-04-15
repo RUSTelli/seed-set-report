@@ -38,7 +38,8 @@ python setup.py install
 python plotting/main.py --plot_type x 
 ```
 
-
+---
+## Project structure
 ```bash
 Project/
 ├── methods/              # Core algorithm implementations
