@@ -20,19 +20,18 @@ python -m venv reti-env
 source reti-env/bin/activate  # Linux/MacOS
 .\reti-env\Scripts\activate   # Windows
 ```
-### add plots directory and install packages 
+### Add plots directory
 ```bash
-### 2. Install packages and setup
 mkdir plots/  # Create output directory structure
+```
+### Install packages 
+```bash
 pip install -r requirements.txt
+```
+### Setup the packages
+```bash
 python setup.py install  # Install as editable package
 ```
-
-### add plots directory and install packages 
-```bash
-### 2. Install packages and setup
-mkdir plots/  # Create output directory structure
-
 
 ```
 ---
