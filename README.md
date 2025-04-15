@@ -23,6 +23,8 @@ mkdir plots/  # Create output directory structure
 pip install -r requirements.txt
 python setup.py install  # Install as editable package
 ```
+---
+## 🚀 Plotting result
 ```bash
 ## 🚀 To run, move inside project's directory:
 python plotting/main.py --plot_type x, where 'x' may be 'influenced' or 'performances'
