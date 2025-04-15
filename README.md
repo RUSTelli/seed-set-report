@@ -16,16 +16,18 @@
 python -m venv reti-env
 source reti-env/bin/activate  # Linux/MacOS
 .\reti-env\Scripts\activate   # Windows
-
+```
+```bash
 ### 2. Install packages and setup
 mkdir plots/  # Create output directory structure
 pip install -r requirements.txt
 python setup.py install  # Install as editable package
-
+```
+```bash
 ## 🚀 To run
 inside project's directory:
 "python plotting/main.py --plot_type x", where 'x' may be 'influenced' or 'performances'
-
+```
 
 
 
